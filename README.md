@@ -11,13 +11,12 @@
  Mention the widgets that you have used for this project and its uses.
 
 
- scaffold: the basic structure of the ui
- appbar: this is used for the topbar that will display the title of the application
- padding
- infocard:a stateless widget that displays the user info in a card
- inkwell: adds the tap effect when a user presses on a widget
- material:adds visual and interactive features to an item card
- icon: displays an icon from the built in library
+ - scaffold: the basic structure of the ui
+ - appbar: this is used for the topbar that will display the title of the application
+ - infocard:a stateless widget that displays the user info in a card
+ - inkwell: adds the tap effect when a user presses on a widget
+ - material:adds visual and interactive features to an item card
+ - icon: displays an icon from the built in library
 
 
  What is the use-case for setState()? Explain the variable that can be affected by setState().

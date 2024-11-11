@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:ecommerce_mobile/widgets/left_drawer.dart';
+import 'package:ecommerce_mobile/screens/productentry_form.dart';
 
 class MyHomePage extends StatelessWidget {
   final String npm = '2306170130';
@@ -24,8 +26,12 @@ class MyHomePage extends StatelessWidget {
             fontWeight: FontWeight.bold,
           ),
         ),
+        iconTheme: const IconThemeData(color: Colors.white),
+        
+
         backgroundColor: Theme.of(context).colorScheme.primary,
       ),
+      drawer:const LeftDrawer(),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
@@ -115,18 +121,26 @@ class ItemCard extends StatelessWidget {
 
   const ItemCard(this.item, {super.key}); 
 
-  @override
+ @override
   Widget build(BuildContext context) {
     return Material(
-      color: item.color,//changed the colors of the widget so that it will correspond to the color assigned in item hompage class
+      // Specify the background color of the application theme.
+      color: item.color,
+      // Round the card border.
       borderRadius: BorderRadius.circular(12),
       child: InkWell(
+        // Touch-responsive area
         onTap: () {
-          ScaffoldMessenger.of(context)//snackbar message
+          // Show SnackBar when clicked
+          ScaffoldMessenger.of(context)
             ..hideCurrentSnackBar()
             ..showSnackBar(
-              SnackBar(content: Text("You have pressed the ${item.name} button!"))
-            );
+              SnackBar(content: Text("You pressed the ${item.name} button!")));
+          // Navigate to the appropriate route (depending on the button type)
+          if (item.name == "Add Product") {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => const ProductEntryFormPage()));
+          }
         },
         child: Container(
           padding: const EdgeInsets.all(8),

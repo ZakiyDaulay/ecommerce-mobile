@@ -39,3 +39,105 @@ Step-by-Step explanation:
 6. added unique icons and color to each of the three buttons. 
 7. changed the theme color of the application to green in MyApp class to match the theme of my past assignements. 
 8. created the itemcard class to display each of the buttons. the snackbar message will appear if the buttons are tapped.
+
+
+
+## ASSIGNMENT 8 README
+
+What is the purpose of const in Flutter? Explain the advantages of using const in Flutter code. When should we use const, and when should it not be used?
+
+const is used to make variable and widgets that are fixed and will not change during runtime. There are several advantages. one of those include it being more efficient, where the widgets are only built once which can save a lot of time and improve performance. the code will also look generally cleaner. when a widget is defined as a constant, it can provide the developer with more information regarding the overall code. The main use of const is for static widgets, which are widgets that don't change in value. You could also use const to be more efficent when defining a specific object like a color, where only one color is used during a section of the code. it shouldn't be used on widgets that depend on dynamic values. examples of dynamic value widgets are ones where the widgets gets input from the user. 
+
+Example of Column:
+
+
+
+Explain and compare the usage of Column and Row in Flutter. Provide example implementations of each layout widget!
+column and row are used to arrange child widgets in either horizontal or vertical direction. the column is aligned on the vertical axis, while the row is aligned in the horizontal axis. 
+
+
+```markdown
+<pre><code>
+child: const Column(
+  children: [
+    Text(
+      'The Swag Store',
+      textAlign: TextAlign.center,
+      style: TextStyle(
+        fontSize: 24,
+        fontWeight: FontWeight.bold,
+        color: Colors.white,
+      ),
+    ),
+    Padding(padding: EdgeInsets.all(8)),
+    Text(
+      "Buy all the stuff you want",
+      textAlign: TextAlign.center,
+      style: TextStyle(
+        fontSize: 15,
+        fontWeight: FontWeight.normal,
+        color: Colors.white,
+      ),
+    ),
+  ],
+),
+
+In this code, the colum widget organizes the texts widgets vertically, meaning that it's on top of each other.
+
+```markdown
+<pre><code>
+        Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                InfoCard(title: 'NPM', content: npm),//info cards on the top of the app
+                InfoCard(title: 'Name', content: name),
+                InfoCard(title: 'Class', content: className),
+              ],
+        )
+
+In this code, the row widget is arranged horizontally. this is done by aligning the infocard widgets along the main axis which is horizontal. 
+
+List the input elements you used on the form page in this assignment. Are there other Flutter input elements you didn’t use in this assignment? Explain!
+
+
+The three main input elements I used on the form page in this assignment is for the product name, the description of the product, and the price of the product. There are several other input elements I didn't use in this assigment. 
+
+These include, checkbox which allows the user to pick an option from a set, switch allows the user to toggle between two options, a slider, which lets the user pick an option from a sliding a knob along a line, datepicker which allows the user to select a date and many more. 
+
+
+How do you set the theme within a Flutter application to ensure consistency? Did you implement a theme in your application?
+
+Yes, you can set a general theme in a flutter application. This is done by defining the ThemeData object in the materialapp widget. I implemented a theme in my application in the main.dart 
+
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+  ```markdown
+  <pre><code>
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Flutter Demo',
+      theme: ThemeData(
+         colorScheme: ColorScheme.fromSwatch(
+            primarySwatch: Colors.green,
+      ).copyWith(secondary: Colors.green[400]),
+      ),
+      home:MyHomePage()
+    );
+  }
+}
+
+In this snippet of my main.dart code I set a general color to my application which is green. I also highlighted a secondary color which is also green. This is done to ensure that there is a neat and consistent presentation to my application. 
+
+How do you manage navigation in a multi-page Flutter application?
+
+to navigate a multi-page flutter application, it uses the navigator widget. to manage the transition between screens. and in each of these screens, they're considered as a route and we are able to use the nivagtion methods to push and pop these routes. 
+
+navigator.push() will add a new page to the navigation stack
+
+navigator.pop() goes back ot the previous screen
+
+navigator.pushReplacement() replaces the current route
+
+navigator.pushandRemoveUntil() will push a new route and remove a route from the navigation stack until a certain conidtion is met 

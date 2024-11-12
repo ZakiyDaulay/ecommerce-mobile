@@ -57,7 +57,7 @@ column and row are used to arrange child widgets in either horizontal or vertica
 
 
 ```markdown
-<pre><code>
+
 child: const Column(
   children: [
     Text(
@@ -81,6 +81,7 @@ child: const Column(
     ),
   ],
 ),
+```
 
 In this code, the colum widget organizes the texts widgets vertically, meaning that it's on top of each other.
 
@@ -109,11 +110,11 @@ These include, checkbox which allows the user to pick an option from a set, swit
 How do you set the theme within a Flutter application to ensure consistency? Did you implement a theme in your application?
 
 Yes, you can set a general theme in a flutter application. This is done by defining the ThemeData object in the materialapp widget. I implemented a theme in my application in the main.dart 
-
+  ```markdown
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  ```markdown
+
 
   @override
   Widget build(BuildContext context) {
@@ -136,10 +137,10 @@ How do you manage navigation in a multi-page Flutter application?
 
 to navigate a multi-page flutter application, it uses the navigator widget. to manage the transition between screens. and in each of these screens, they're considered as a route and we are able to use the nivagtion methods to push and pop these routes. 
 
-navigator.push() will add a new page to the navigation stack
+`navigator.push()` will add a new page to the navigation stack
 
-navigator.pop() goes back ot the previous screen
+`navigator.pop()` goes back ot the previous screen
 
-navigator.pushReplacement() replaces the current route
+`navigator.pushReplacement()` replaces the current route
 
-navigator.pushandRemoveUntil() will push a new route and remove a route from the navigation stack until a certain conidtion is met 
+`navigator.pushandRemoveUntil()` will push a new route and remove a route from the navigation stack until a certain conidtion is met 

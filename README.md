@@ -85,7 +85,7 @@ child: const Column(
 In this code, the colum widget organizes the texts widgets vertically, meaning that it's on top of each other.
 
 ```markdown
-<pre><code>
+
         Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
@@ -94,6 +94,7 @@ In this code, the colum widget organizes the texts widgets vertically, meaning t
                 InfoCard(title: 'Class', content: className),
               ],
         )
+```
 
 In this code, the row widget is arranged horizontally. this is done by aligning the infocard widgets along the main axis which is horizontal. 
 
@@ -113,7 +114,7 @@ class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
   ```markdown
-  <pre><code>
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -127,6 +128,7 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+```
 
 In this snippet of my main.dart code I set a general color to my application which is green. I also highlighted a secondary color which is also green. This is done to ensure that there is a neat and consistent presentation to my application. 
 

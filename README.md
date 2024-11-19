@@ -200,3 +200,5 @@ Explain how you implement the checklist above step by step! (not just following 
 16. added a logout function in `authentication/views.py`
 17. added the routing for the logout function
 18. modified the `product_card` widget so that when the logout function is pressed, it will  function as the logout button. 
+19. modified the listview in `list_productentry.dart` so that when a user clicks on a product entry in the list, it will redirect to `productdetails.dart`
+20. created a new screen called `productdetails.dart` which displays the attributes of the clicked product. 

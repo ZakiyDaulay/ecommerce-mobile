@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:ecommerce_mobile/models/product_entry.dart';
 import 'package:pbp_django_auth/pbp_django_auth.dart';
 import 'package:ecommerce_mobile/widgets/left_drawer.dart';
+import 'package:ecommerce_mobile/screens/productdetails.dart';
 import 'package:provider/provider.dart';
 class ProductEntryPage extends StatefulWidget {
   const ProductEntryPage({super.key});
@@ -54,8 +55,17 @@ class _ProductEntryPageState extends State<ProductEntryPage> {
               );
             } else {
               return ListView.builder(
-                itemCount: snapshot.data!.length,
-                itemBuilder: (_, index) => Container(
+              itemCount: snapshot.data!.length,
+              itemBuilder: (_, index) => GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => ProductDetailPage(product: snapshot.data![index]),
+                    ),
+                  );
+                },
+                child: Container(
                   margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
                   padding: const EdgeInsets.all(20.0),
                   decoration: BoxDecoration(
@@ -66,7 +76,6 @@ class _ProductEntryPageState extends State<ProductEntryPage> {
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      // Use 'name' instead of the non-existent 'product'
                       Text(
                         "Name: ${snapshot.data![index].fields.name}",
                         style: const TextStyle(
@@ -83,7 +92,9 @@ class _ProductEntryPageState extends State<ProductEntryPage> {
                     ],
                   ),
                 ),
-              );
+              ),
+            );
+
 
             }
           }

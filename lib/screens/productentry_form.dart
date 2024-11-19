@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:ecommerce_mobile/widgets/left_drawer.dart';
+import 'package:provider/provider.dart'; // Import Provider package
+import 'package:pbp_django_auth/pbp_django_auth.dart'; // Import pbp_django_auth package
+import 'dart:convert';
+import 'package:ecommerce_mobile/screens/menu.dart';
+
 
 class ProductEntryFormPage extends StatefulWidget {
   const ProductEntryFormPage({super.key});
@@ -16,6 +21,7 @@ class _ProductEntryFormPageState extends State<ProductEntryFormPage> {
 	int _price = 0;
   @override
   Widget build(BuildContext context) {
+    final request = context.watch<CookieRequest>();
     return Scaffold(
   appBar: AppBar(
     title: const Center(
@@ -114,37 +120,37 @@ Padding(
                       backgroundColor: WidgetStateProperty.all(
                           Theme.of(context).colorScheme.primary),
                     ),
-                    onPressed: () {
-                      if (_formKey.currentState!.validate()) {
-                        showDialog(
-                          context: context,
-                          builder: (context) {
-                            return AlertDialog(
-                              title: const Text('Product successfully saved'),
-                              content: SingleChildScrollView(
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text('Product: $_product'),
-                                    Text('Descriptions: $_description'),
-                                    Text('Product price: $_price dollars'),
-                                  ],
-                                ),
-                              ),
-                              actions: [
-                                TextButton(
-                                  child: const Text('OK'),
-                                  onPressed: () {
-                                    Navigator.pop(context);
-                                    _formKey.currentState!.reset();
-                                  },
-                                ),
-                              ],
-                            );
-                          },
-                        );
-                      }
-                    },
+                   onPressed: () async {
+                        if (_formKey.currentState!.validate()) {
+                          
+                          final response = await request.postJson(
+                            "http://localhost:8000/create-flutter/", // Ensure the URL is correct
+                            jsonEncode({
+                              'name': _product,        // Correct key for name
+                              'price': _price,         // Correct key for price
+                              'description': _description, // Correct key for description
+                                        // Set the user ID, modify it as per your context
+                            }),
+                          );
+
+                          if (context.mounted) {
+                            if (response['status'] == 'success') {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                const SnackBar(content: Text("New product saved successfully!")),
+                              );
+                              Navigator.pushReplacement(
+                                context,
+                                MaterialPageRoute(builder: (context) => MyHomePage()),
+                              );
+                            } else {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                const SnackBar(content: Text("Something went wrong, please try again.")),
+                              );
+                            }
+                          }
+                        }
+                      },
+
                     child: const Text(
                       "Save",
                       style: TextStyle(color: Colors.white),

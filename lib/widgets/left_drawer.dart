@@ -1,8 +1,7 @@
 import 'package:ecommerce_mobile/screens/productentry_form.dart';
+import 'package:ecommerce_mobile/screens/list_productentry.dart';
 import 'package:flutter/material.dart';
 import 'package:ecommerce_mobile/screens/menu.dart';
-
-
 
 class LeftDrawer extends StatelessWidget {
   const LeftDrawer({super.key});
@@ -60,10 +59,21 @@ class LeftDrawer extends StatelessWidget {
       Navigator.pushReplacement(
           context,
           MaterialPageRoute(
-            builder: (context) => ProductEntryFormPage(),
+            builder: (context) => const ProductEntryFormPage(),
           ));
     },
   ),
+  ListTile(
+    leading: const Icon(Icons.add_reaction_rounded),
+    title: const Text('Product List'),
+    onTap: () {
+        // Route to the mood page
+        Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => const ProductEntryPage()),
+        );
+    },
+),
         ],
       ),
     );

@@ -144,3 +144,59 @@ to navigate a multi-page flutter application, it uses the navigator widget. to m
 `navigator.pushReplacement()` replaces the current route
 
 `navigator.pushandRemoveUntil()` will push a new route and remove a route from the navigation stack until a certain conidtion is met 
+
+
+## ASSIGNMENT 9 README
+ Explain why we need to create a model to retrieve or send JSON data. Will an error occur if we don't create a model first?
+
+Creating a model is definitely important for retriving and sending json data because models are the way data is structured and handled. When data is sent or retrieved, the model ensures that the data is structure properly. If we don't use a model, it could result in an error with how the data displayed. for example a list of data, could be wrong because we didn't implement a model
+
+Explain the function of the http library that you implemented for this task.
+
+
+In the context of this assignment, the http library was used to send data as raw strings. we use the `dart:convert` library to decode json responses so that we can use it in the flutte rproejt
+
+Explain the function of CookieRequest and why it’s necessary to share the CookieRequest instance with all components in the Flutter app.
+
+CookieRequest is used to establish communication and connection between the django and flutter applications. it handles cookies automatically, so that user sessions can occur across requests. 
+
+Explain the mechanism of data transmission, from input to display in Flutter.
+
+First it will collect data from user input from textfields, buttons, and other widgets. Then it processes the data in the backend. After that it will parse through the Json data . Finally it will display the data for the user.
+
+Explain the authentication mechanism from login, register, to logout. Start from inputting account data in Flutter to Django’s completion of the authentication process and display of the menu in Flutter.
+
+
+Registration:
+
+the user enters their username, password and conirm password in the UI. the data will be sent back to the django backend using  `pbp_django_auth`. The data will then be converted into json format. Django will check if the data is valid. if it's valid a new user will be created using the user model in django. In flutter, it will then redirect the user to the loginpage
+
+Login:
+
+the user enters their username and password in the UI. the data will be sent back to the django backend using pbp_django_auth`. The data will then be converted into json format. If it's valid it will create a session and set cookies for the user. In flutter, it will redirect the user to the menu page. 
+
+Logout:
+
+the user will press the logout widget in the menu page. Flutter will then send a request method to the django backend. it sends the request to the url `http://localhost:8000/auth/logout/`. If valid, it will redirect the user to the login page. 
+
+Explain how you implement the checklist above step by step! (not just following the tutorial).
+
+
+1. Created a new application in `ecommerce` called `authentication`.
+2. Installed corsheaders to the project
+3. created a login function in `authentication/views.py`
+4. added the url routing for that login function
+5. created a new screen for the flutter project called `login.dart`
+6. created a register function in `authentication/views.py`
+7. added the url routing for that register function
+8. created a new screen for the flutter project called `register.dart`
+9. filled data in the `ecommerce` project by adding product entries
+10. opened localhost:8000/json to retrieve the data in json format
+11. used Quicktype website to create a model that can adapt to the json data.
+12. made a new screen for the flutter proejct called `list_moodentry.dart` that will show the list of product in the flutter project
+13. created a function called `create-product-flutter` , which can make us add products from the flutter project instead of just through the django project.
+14. added the routing for that function
+15. connected the `productentry_form.dart` to the django project by using `CookieRequest` 
+16. added a logout function in `authentication/views.py`
+17. added the routing for the logout function
+18. modified the `product_card` widget so that when the logout function is pressed, it will  function as the logout button. 

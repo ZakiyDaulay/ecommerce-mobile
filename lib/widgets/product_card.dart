@@ -40,12 +40,12 @@ class ItemCard extends StatelessWidget {
           if (item.name == "Add Product") {
               Navigator.push(context,
                   MaterialPageRoute(builder: (context) => const ProductEntryFormPage()));
-          }else if (item.name == "View Product") {
-            // Navigate to ProducEntryPage
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => const ProductEntryPage()),
-            );
+          }else if (item.name == "View Product List") {
+              Navigator.push(context,
+                  MaterialPageRoute(
+                      builder: (context) => const ProductEntryPage()
+                  ),
+              );
           }else if (item.name == "Logout") {
             final response = await request.logout(
                 // TODO: Change the URL to your Django app's URL. Don't forget to add the trailing slash (/) if needed.
